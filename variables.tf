@@ -30,9 +30,3 @@ variable "admin_password_init" {
   sensitive   = true
   default     = null
 }
-
-variable "ssh_key_value_init" {
-  description = "(Required) Virtual machine user ssh key used during bootstrap (unchanging)"
-  type        = string
-  sensitive   = true
-}
