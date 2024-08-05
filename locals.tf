@@ -1,7 +1,7 @@
 locals {
   coid           = "rush"
   environment    = "dr"
-  location       = "centraslus"
+  location       = "centralus"
   location_short = "cus"
   function       = "hub"
 
