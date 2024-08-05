@@ -97,8 +97,8 @@ resource "azurerm_express_route_gateway" "ergateway" {
 
 resource "azurerm_public_ip" "ext_natgw_pip" {
   name                = "pip-natgw-p-${var.location_short}"
-  location            = var.resource_group_compute.location
-  resource_group_name = var.resource_group_compute.name
+  location            = var.resource_group_networking.location
+  resource_group_name = var.resource_group_networking.name
   allocation_method   = "Static"
   sku                 = "Standard"
 }
