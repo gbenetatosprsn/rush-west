@@ -32,11 +32,6 @@ variable "resource_group_networking" {
   type        = any
 }
 
-variable "resource_group_compute" {
-  description = "(Required) the resource group to build compute components in"
-  type        = any
-}
-
 variable "admin_username" {
   description = "(Required) Virtual machine administrator username"
   type        = string
