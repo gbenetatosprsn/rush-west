@@ -7,7 +7,7 @@
 resource "azurerm_public_ip" "int_p_management00" {
   name                = "pip-intmanagement-p-${var.location_short}-0"
   location            = var.resource_group_networking.location
-  resource_group_name = var.resource_group_compute.name
+  resource_group_name = var.resource_group_networking.name
   allocation_method   = "Static"
   sku                 = "Standard"
 }
@@ -18,7 +18,7 @@ resource "azurerm_public_ip" "int_p_management00" {
 resource "azurerm_public_ip" "ext_p_management00" {
   name                = "pip-extmanagement-p-${var.location_short}-0"
   location            = var.resource_group_networking.location
-  resource_group_name = var.resource_group_compute.name
+  resource_group_name = var.resource_group_networking.name
   allocation_method   = "Static"
   sku                 = "Standard"
 }
@@ -28,7 +28,7 @@ resource "azurerm_public_ip" "ext_p_management00" {
 resource "azurerm_network_interface" "int_p_management00" {
   name                 = "nic-intmanagement-p-${var.location_short}-0"
   location             = var.resource_group_networking.location
-  resource_group_name  = var.resource_group_compute.name
+  resource_group_name  = var.resource_group_networking.name
   enable_ip_forwarding = false
 
   ip_configuration {
@@ -44,8 +44,8 @@ resource "azurerm_network_interface" "int_p_management00" {
 
 resource "azurerm_network_interface" "ext_p_management00" {
   name                 = "nic-extmanagement-p-${var.location_short}-0"
-  location             = var.resource_group_compute.location
-  resource_group_name  = var.resource_group_compute.name
+  location             = var.resource_group_networking.location
+  resource_group_name  = var.resource_group_networking.name
   enable_ip_forwarding = false
 
   ip_configuration {
@@ -61,8 +61,8 @@ resource "azurerm_network_interface" "ext_p_management00" {
 ## Internal FW
 resource "azurerm_network_security_group" "int_management00" {
   name                = "nsg-intmanagement-${var.location_short}"
-  location            = var.resource_group_compute.location
-  resource_group_name = var.resource_group_compute.name
+  location            = var.resource_group_networking.location
+  resource_group_name = var.resource_group_networking.name
 
   security_rule {
     name                       = "Deny_ALL"
@@ -167,8 +167,8 @@ resource "azurerm_network_security_group" "int_management00" {
 ## External FW
 resource "azurerm_network_security_group" "ext_management00" {
   name                = "nsg-extmanagement-${var.location_short}"
-  location            = var.resource_group_compute.location
-  resource_group_name = var.resource_group_compute.name
+  location            = var.resource_group_networking.location
+  resource_group_name = var.resource_group_networking.name
 
   security_rule {
     name                       = "Deny_ALL"
@@ -294,16 +294,16 @@ resource "azurerm_network_interface_security_group_association" "ext_p_mgmt00" {
 # Public IP Address - NATGW - NO Need for PIP
 resource "azurerm_public_ip" "ethernet00_0_1" {
   name                = "nic-ethernet00_0_1-pip"
-  location            = var.resource_group_compute.location
-  resource_group_name = var.resource_group_compute.name
+  location            = var.resource_group_networking.location
+  resource_group_name = var.resource_group_networking.name
   allocation_method   = "Static"
   sku                 = "Standard"
 }
 
 resource "azurerm_public_ip" "ethernet01_0_1" {
   name                = "nic-ethernet01_0_1-pip"
-  location            = var.resource_group_compute.location
-  resource_group_name = var.resource_group_compute.name
+  location            = var.resource_group_networking.location
+  resource_group_name = var.resource_group_networking.name
   allocation_method   = "Static"
   sku                 = "Standard"
 }
@@ -313,8 +313,8 @@ resource "azurerm_public_ip" "ethernet01_0_1" {
 # Internal Firewalls
 resource "azurerm_network_interface" "int_p_public00" {
   name                          = "nic-intpublic-p-${var.location_short}-0"
-  location                      = var.resource_group_compute.location
-  resource_group_name           = var.resource_group_compute.name
+  location                      = var.resource_group_networking.location
+  resource_group_name           = var.resource_group_networking.name
   enable_ip_forwarding          = true
   enable_accelerated_networking = true
 
@@ -331,8 +331,8 @@ resource "azurerm_network_interface" "int_p_public00" {
 # External Firewalls
 resource "azurerm_network_interface" "ext_p_public00" {
   name                          = "nic-extpublic-p-${var.location_short}-0"
-  location                      = var.resource_group_compute.location
-  resource_group_name           = var.resource_group_compute.name
+  location                      = var.resource_group_networking.location
+  resource_group_name           = var.resource_group_networking.name
   enable_ip_forwarding          = true
   enable_accelerated_networking = true
 
@@ -350,8 +350,8 @@ resource "azurerm_network_interface" "ext_p_public00" {
 
 resource "azurerm_network_security_group" "data" {
   name                = "nsg-data-${var.location_short}"
-  location            = var.resource_group_compute.location
-  resource_group_name = var.resource_group_compute.name
+  location            = var.resource_group_networking.location
+  resource_group_name = var.resource_group_networking.name
 
   security_rule {
     name                       = "data-inbound"
@@ -403,8 +403,8 @@ resource "azurerm_network_interface_security_group_association" "ext_p_public_00
 ## Internal Firewalls
 resource "azurerm_network_interface" "int_p_trust00" {
   name                          = "nic-inttrust-p-${var.location_short}-0"
-  location                      = var.resource_group_compute.location
-  resource_group_name           = var.resource_group_compute.name
+  location                      = var.resource_group_networking.location
+  resource_group_name           = var.resource_group_networking.name
   enable_ip_forwarding          = true
   enable_accelerated_networking = true
 
@@ -422,8 +422,8 @@ resource "azurerm_network_interface" "int_p_trust00" {
 ## External Firewalls
 resource "azurerm_network_interface" "ext_p_trust00" {
   name                          = "nic-exttrust-p-${var.location_short}-0"
-  location                      = var.resource_group_compute.location
-  resource_group_name           = var.resource_group_compute.name
+  location                      = var.resource_group_networking.location
+  resource_group_name           = var.resource_group_networking.name
   enable_ip_forwarding          = true
   enable_accelerated_networking = true
 
@@ -461,8 +461,8 @@ resource "azurerm_network_interface_security_group_association" "ext_p_trust_00"
 ## Internal Firewalls
 resource "azurerm_network_interface" "int_p_ha00" {
   name                          = "nic-intha2-p-${var.location_short}-0"
-  location                      = var.resource_group_compute.location
-  resource_group_name           = var.resource_group_compute.name
+  location                      = var.resource_group_networking.location
+  resource_group_name           = var.resource_group_networking.name
   enable_ip_forwarding          = true
   enable_accelerated_networking = true
 
@@ -479,8 +479,8 @@ resource "azurerm_network_interface" "int_p_ha00" {
 
 resource "azurerm_network_interface" "ext_p_ha00" {
   name                          = "nic-extha2-p-${var.location_short}-0"
-  location                      = var.resource_group_compute.location
-  resource_group_name           = var.resource_group_compute.name
+  location                      = var.resource_group_networking.location
+  resource_group_name           = var.resource_group_networking.name
   enable_ip_forwarding          = true
   enable_accelerated_networking = true
 
