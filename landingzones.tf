@@ -19,7 +19,6 @@ module "palo_active_passive" {
   ha2_space_prefix          = [cidrsubnet(local.hub_address_space[0], 3, 2)]
   lb_space_prefix           = [cidrsubnet(local.hub_address_space[0], 3, 3)]
   resource_group_networking = azurerm_resource_group.resource_group_networking00
-  resource_group_compute    = azurerm_resource_group.resource_group_compute00
 
   admin_username = var.admin_username_networking
   admin_password = var.admin_password_init
