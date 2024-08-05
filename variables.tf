@@ -1,16 +1,19 @@
 variable "tenant_id" {
   description = "(Required) Globaly Unique Identifier (GUID) for your Microsoft Tenant"
   type        = string
+  default      = "cf668d98-df58-45c9-86fb-b72c2761364b"
 }
 
 variable "subscription_id" {
   description = "(Required) Globaly Unique Identifier (GUID) for your Microsoft Subscription within a Tenant"
   type        = string
+  default     = "1407e914-ef0f-491a-9475-91dbb0fb191b"
 }
 
 variable "client_id" {
   description = "(Required) Application ID used to associate your application with Azure AD at runtime"
   type        = string
+  default    = "5b26df5a-ebc9-4bdc-8072-2cd1b95f094b"
 }
 
 variable "client_secret" {
