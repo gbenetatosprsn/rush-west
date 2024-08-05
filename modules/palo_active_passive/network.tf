@@ -51,8 +51,8 @@ resource "azurerm_subnet" "loadbalancer00" {
 
 #Get vWAN ID
 data "azurerm_virtual_wan" "vwan" {
-  name                                          = "vwan-hubnetwork-p-eus2"
-  resource_group_name                           = var.resource_group_networking.name
+  name                                          = "vwan-rush"
+  resource_group_name                           = "vwan-rush"
 }
 
 # Creation of vHUB in default location - For DR we need to add second HUB
