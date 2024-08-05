@@ -6,7 +6,7 @@
 #Internal Firewalls
 resource "azurerm_public_ip" "int_p_management00" {
   name                = "pip-intmanagement-p-${var.location_short}-0"
-  location            = var.resource_group_compute.location
+  location            = var.resource_group_networking.location
   resource_group_name = var.resource_group_compute.name
   allocation_method   = "Static"
   sku                 = "Standard"
@@ -17,7 +17,7 @@ resource "azurerm_public_ip" "int_p_management00" {
 #External Firewalls
 resource "azurerm_public_ip" "ext_p_management00" {
   name                = "pip-extmanagement-p-${var.location_short}-0"
-  location            = var.resource_group_compute.location
+  location            = var.resource_group_networking.location
   resource_group_name = var.resource_group_compute.name
   allocation_method   = "Static"
   sku                 = "Standard"
@@ -27,7 +27,7 @@ resource "azurerm_public_ip" "ext_p_management00" {
 ##Internal Firewalls
 resource "azurerm_network_interface" "int_p_management00" {
   name                 = "nic-intmanagement-p-${var.location_short}-0"
-  location             = var.resource_group_compute.location
+  location             = var.resource_group_networking.location
   resource_group_name  = var.resource_group_compute.name
   enable_ip_forwarding = false
 
