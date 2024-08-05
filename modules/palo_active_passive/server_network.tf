@@ -507,8 +507,8 @@ resource "azurerm_marketplace_agreement" "palo" {
 
 resource "azurerm_linux_virtual_machine" "int_p_vmseries00" {
   # Resource Group & Location:
-  location            = var.resource_group_compute.location
-  resource_group_name = var.resource_group_compute.name
+  location            = var.resource_group_networking.location
+  resource_group_name = var.resource_group_networking.name
 
   name = "vm-intpa-p-${var.location_short}-0"
 
@@ -562,8 +562,8 @@ resource "azurerm_linux_virtual_machine" "int_p_vmseries00" {
 
 resource "azurerm_linux_virtual_machine" "ext_p_vmseries00" {
   # Resource Group & Location:
-  location            = var.resource_group_compute.location
-  resource_group_name = var.resource_group_compute.name
+  location            = var.resource_group_networking.location
+  resource_group_name = var.resource_group_networking.name
 
   name = "vm-extpa-p-${var.location_short}-0"
 
