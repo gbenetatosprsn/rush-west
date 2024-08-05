@@ -31,5 +31,4 @@ variable "admin_password_init" {
   description = "(Optional) Virtual machine administrator password used during bootstrap (unchanging). This is not needed if ssh_key_value_init is supplied"
   type        = string
   sensitive   = true
-  default     = null
 }
